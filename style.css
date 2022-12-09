@@ -15,11 +15,11 @@
 
     --clr-light: #fff;
     --clr-dark: #4b4b4b;
-    --clr-accent: #2b39cf;
-    --clr-accent2: #42e433;
+    --clr-accent: #1121d2;
+    --clr-accent2: #55e947;
 
     --fs-h1: 3rem;
-    --fs-h2: 2.25rem;
+    --fs-h2: 2rem;
     --fs-h3: 1.25rem;
     --fs-body: 1rem;
 
@@ -30,7 +30,7 @@
 @media (min-width: 900px) {
     :root {
         --fs-h1: 4.5rem;
-        --fs-h2: 3.75rem;
+        --fs-h2: 2.5rem;
         --fs-h3: 1.5rem;
         --fs-body: 1.125rem;
     }
@@ -320,6 +320,16 @@ header {
         left: -1.5em;
         width: calc(100% + 1.5em);
     }
+}
+
+.avgTable {
+    margin: auto;
+    padding: 1em;
+}
+
+.gameTables {
+    margin: auto;
+    padding: 1em;
 }
 
 /* My services section */

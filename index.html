@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>nba-app</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
 
     <!-- Update these with other Google fonts? -->
@@ -19,7 +19,7 @@
     <header>
         <div class="logo">
             <a class="logo__link" href="#home">
-                <i class="fa-solid fa-k"></i>            
+                <i class="fa-solid fa-k"></i> 
             </a>
         </div>
         <button class="nav-toggle" aria-label="toggle navigation">
@@ -86,21 +86,51 @@
     <section class="my-work" id="work">
         <h2 class="section__title section__title--work">Averages From Last 5 Games Played</h2>
 
-        <table class="section__subtitle section__subtitle--work">
+        <table class="avgTable">
             <tr>
-              <th>Pts |</th>
-              <th>Ast |</th>
-              <th>Reb |</th>
-              <th>Blk |</th>
-              <th>Stl</th> 
-            </tr>
-            <tr>
-              <td class="avgPts"></td>
-              <td class="avgAst"></td>
-              <td class="avgReb"></td>
-              <td class="avgBlk"></td>
-              <td class="avgStl"></td>
-            </tr>
+                <th>PTS</th>
+                <td class="avgPts"></td>
+                <th>3P</th>
+                <td class="avg3p"></td>
+                <th>2P</th>
+                <td class="avg2p"></td>
+                <th>FT%</th>
+                <td class="avgFtp"></td>
+              </tr>
+              <tr>
+                <th>AST</th>
+                <td class="avgAst"></td>
+                <th>3PA</th>
+                <td class="avg3pa"></td>
+                <th>2PA</th>
+                <td class="avg2pa"></td>
+                <th>PF</th>
+                <td class="avgPf"></td>
+              </tr>
+              <tr>
+                <th>REB</th>
+                <td class="avgReb"></td>
+                <th>3P%</th>
+                <td class="avg3pp"></td>
+                <th>2P%</th>
+                <td class="avg2pp"></td>
+              </tr>
+              <tr>
+                <th>BLK</th>
+                <td class="avgBlk"></td>
+                <th>MIN</th>
+                <td class="avgMin"></td>
+                <th>FT</th>
+                <td class="avgFt"></td>
+              </tr>
+              <tr>
+                <th>STL</th>
+                <td class="avgStl"></td>
+                <th>TO</th>
+                <td class="avgTo"></td>
+                <th>FTA</th>
+                <td class="avgFta"></td>
+              </tr>
           </table>
 
         <h2 class="section__title section__title--work2">Stats From Last 5 Games Played</h2>
@@ -108,16 +138,58 @@
         <div class="portfolio">
 
             <div>
-                <h2>Game 1</h2>
-                <p class="ptsGame1">Pts</p>
-                <p class="astGame1">Ast</p>
-                <p class="rebGame1">Reb</p>
-                <p class="blkGame1">Blk</p>
-                <p class="stlGame1">Stl</p>
+                <h3>Game 1</h3>
+
+                <table class="gameTables">
+                    <tr>
+                      <th>PTS</th>
+                      <td class="ptsGame1"></td>
+                      <th>3P</th>
+                      <td class="threePgame1"></td>
+                      <th>2P</th>
+                      <td class="twoPgame1"></td>
+                      <th>FT%</th>
+                      <td class="ftpGame1"></td>
+                    </tr>
+                    <tr>
+                      <th>AST</th>
+                      <td class="astGame1"></td>
+                      <th>3PA</th>
+                      <td class="threePaGame1"></td>
+                      <th>2PA</th>
+                      <td class="twoPaGame1"></td>
+                      <th>PF</th>
+                      <td class="pfGame1"></td>
+                    </tr>
+                    <tr>
+                      <th>REB</th>
+                      <td class="rebGame1"></td>
+                      <th>3P%</th>
+                      <td class="threePpGame1"></td>
+                      <th>2P%</th>
+                      <td class="twoPpGame1"></td>
+                    </tr>
+                    <tr>
+                      <th>BLK</th>
+                      <td class="blkGame1"></td>
+                      <th>MIN</th>
+                      <td class="minGame1"></td>
+                      <th>FT</th>
+                      <td class="ftGame1"></td>
+                    </tr>
+                    <tr>
+                      <th>STL</th>
+                      <td class="stlGame1"></td>
+                      <th>TO</th>
+                      <td class="toGame1"></td>
+                      <th>FTA</th>
+                      <td class="ftaGame1"></td>
+                    </tr>
+                  </table>
             </div>
 
             <div>
-                <h2>Game 2</h2>
+                <h3>Game 2</h3>
                 <p class="ptsGame2">Pts</p>
                 <p class="astGame2">Ast</p>
                 <p class="rebGame2">Reb</p>
@@ -126,7 +198,7 @@
             </div>
 
             <div>
-                <h2>Game 3</h2>
+                <h3>Game 3</h3>
                 <p class="ptsGame3">Pts</p>
                 <p class="astGame3">Ast</p>
                 <p class="rebGame3">Reb</p>
@@ -135,7 +207,7 @@
             </div>
 
             <div>
-                <h2>Game 4</h2>
+                <h3>Game 4</h3>
                 <p class="ptsGame4">Pts</p>
                 <p class="astGame4">Ast</p>
                 <p class="rebGame4">Reb</p>
@@ -144,7 +216,7 @@
             </div>
 
             <div>
-                <h2>Game 5</h2>
+                <h3>Game 5</h3>
                 <p class="ptsGame5">Pts</p>
                 <p class="astGame5">Ast</p>
                 <p class="rebGame5">Reb</p>
