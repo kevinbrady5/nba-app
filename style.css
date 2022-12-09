@@ -100,16 +100,8 @@ h1 {font-size: var(--fs-h1);}
 h2 {font-size: var(--fs-h2);}
 h3 {font-size: var(--fs-h3);}
 
-.section__title {
-    margin-bottom: .25em;
-}
-
 .section__title--intro {
     font-weight: var(--fw-reg);
-}
-
-.section__title--intro strong {
-    display: block;
 }
 
 .section__subtitle {
@@ -137,6 +129,8 @@ h3 {font-size: var(--fs-h3);}
     width: fit-content;
     margin: auto;
     box-shadow: var(--bs);
+    border-radius: 10px;
+    font-weight: var(--fw-reg);
 }
 
 .section__title--work2 {
@@ -147,6 +141,8 @@ h3 {font-size: var(--fs-h3);}
     box-shadow: var(--bs);
     margin: auto;
     margin-bottom: 1em;
+    border-radius: 10px;
+    font-weight: var(--fw-reg);
 }
 
 .section__subtitle--work {
@@ -293,16 +289,7 @@ header {
 }
 
 @media (min-width: 600px) {
-    .intro {
-        display: grid;
-        width: min-content;
-        margin: 0 auto;
-        grid-column-gap: 1em;
-        grid-template-areas: 
-            "img title"
-            "img subtitle";
-        grid-template-columns: min-content max-content;
-    }
+   
 
     .intro__img {
         grid-area: img;
@@ -327,9 +314,21 @@ header {
     padding: 1em;
 }
 
+.gameDiv {
+    border: 1.5px solid var(--clr-dark);
+    border-radius: 10px;
+    box-shadow: var(--bs);
+    padding: 1em;
+    margin: auto;
+}
+
 .gameTables {
     margin: auto;
     padding: 1em;
+}
+
+.gameTables th, td {
+    padding: .25em;
 }
 
 /* My services section */
@@ -432,7 +431,8 @@ header {
 
 .portfolio {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    row-gap: 1em;
 }
 
 .portfolio__item {
@@ -459,7 +459,7 @@ header {
 
 @media (min-width: 900px) {
     .portfolio {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     }
 }
 

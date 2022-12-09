@@ -1,148 +1,144 @@
-//nba-app js file
+const switchPlayerButton = document.querySelector(".switchPlayer");
 
-avgPts = document.querySelector(".avgPts");
-ptsGame1 = document.querySelector(".ptsGame1");
-ptsGame2 = document.querySelector(".ptsGame2");
-ptsGame3 = document.querySelector(".ptsGame3");
-ptsGame4 = document.querySelector(".ptsGame4");
-ptsGame5 = document.querySelector(".ptsGame5");
+const playerName = document.querySelector(".playerName");
+const playerSize = document.querySelector(".playerSize");
+const playerPosition = document.querySelector(".playerPosition");
+const playerTeam = document.querySelector(".playerTeam");
 
-avgAst = document.querySelector(".avgAst");
-astGame1 = document.querySelector(".astGame1");
-astGame2 = document.querySelector(".astGame2");
-astGame3 = document.querySelector(".astGame3");
-astGame4 = document.querySelector(".astGame4");
-astGame5 = document.querySelector(".astGame5");
+const avgPts = document.querySelector(".avgPts");
+const ptsGame1 = document.querySelector(".ptsGame1");
+const ptsGame2 = document.querySelector(".ptsGame2");
+const ptsGame3 = document.querySelector(".ptsGame3");
+const ptsGame4 = document.querySelector(".ptsGame4");
+const ptsGame5 = document.querySelector(".ptsGame5");
 
-avgReb = document.querySelector(".avgReb");
-rebGame1 = document.querySelector(".rebGame1");
-rebGame2 = document.querySelector(".rebGame2");
-rebGame3 = document.querySelector(".rebGame3");
-rebGame4 = document.querySelector(".rebGame4");
-rebGame5 = document.querySelector(".rebGame5");
+const avgAst = document.querySelector(".avgAst");
+const astGame1 = document.querySelector(".astGame1");
+const astGame2 = document.querySelector(".astGame2");
+const astGame3 = document.querySelector(".astGame3");
+const astGame4 = document.querySelector(".astGame4");
+const astGame5 = document.querySelector(".astGame5");
 
-avgBlk = document.querySelector(".avgBlk");
-blkGame1 = document.querySelector(".blkGame1");
-blkGame2 = document.querySelector(".blkGame2");
-blkGame3 = document.querySelector(".blkGame3");
-blkGame4 = document.querySelector(".blkGame4");
-blkGame5 = document.querySelector(".blkGame5");
+const avgReb = document.querySelector(".avgReb");
+const rebGame1 = document.querySelector(".rebGame1");
+const rebGame2 = document.querySelector(".rebGame2");
+const rebGame3 = document.querySelector(".rebGame3");
+const rebGame4 = document.querySelector(".rebGame4");
+const rebGame5 = document.querySelector(".rebGame5");
 
-avgStl = document.querySelector(".avgStl");
-stlGame1 = document.querySelector(".stlGame1");
-stlGame2 = document.querySelector(".stlGame2");
-stlGame3 = document.querySelector(".stlGame3");
-stlGame4 = document.querySelector(".stlGame4");
-stlGame5 = document.querySelector(".stlGame5");
+const avgBlk = document.querySelector(".avgBlk");
+const blkGame1 = document.querySelector(".blkGame1");
+const blkGame2 = document.querySelector(".blkGame2");
+const blkGame3 = document.querySelector(".blkGame3");
+const blkGame4 = document.querySelector(".blkGame4");
+const blkGame5 = document.querySelector(".blkGame5");
 
-avg3p = document.querySelector(".avg3p");
-threePgame1 = document.querySelector(".threePgame1");
-stlGame2 = document.querySelector(".stlGame2");
-stlGame3 = document.querySelector(".stlGame3");
-stlGame4 = document.querySelector(".stlGame4");
-stlGame5 = document.querySelector(".stlGame5");
+const avgStl = document.querySelector(".avgStl");
+const stlGame1 = document.querySelector(".stlGame1");
+const stlGame2 = document.querySelector(".stlGame2");
+const stlGame3 = document.querySelector(".stlGame3");
+const stlGame4 = document.querySelector(".stlGame4");
+const stlGame5 = document.querySelector(".stlGame5");
 
-avg3pa = document.querySelector(".avg3pa");
-threePaGame1 = document.querySelector(".threePaGame1");
-stlGame2 = document.querySelector(".stlGame2");
-stlGame3 = document.querySelector(".stlGame3");
-stlGame4 = document.querySelector(".stlGame4");
-stlGame5 = document.querySelector(".stlGame5");
+const avg3p = document.querySelector(".avg3p");
+const threePgame1 = document.querySelector(".threePgame1");
+const threePgame2 = document.querySelector(".threePgame2");
+const threePgame3 = document.querySelector(".threePgame3");
+const threePgame4 = document.querySelector(".threePgame4");
+const threePgame5 = document.querySelector(".threePgame5");
 
-avg3pp = document.querySelector(".avg3pp");
-threePpGame1 = document.querySelector(".threePpGame1");
-stlGame2 = document.querySelector(".stlGame2");
-stlGame3 = document.querySelector(".stlGame3");
-stlGame4 = document.querySelector(".stlGame4");
-stlGame5 = document.querySelector(".stlGame5");
+const avg3pa = document.querySelector(".avg3pa");
+const threePaGame1 = document.querySelector(".threePaGame1");
+const threePaGame2 = document.querySelector(".threePaGame2");
+const threePaGame3 = document.querySelector(".threePaGame3");
+const threePaGame4 = document.querySelector(".threePaGame4");
+const threePaGame5 = document.querySelector(".threePaGame5");
 
-avg2p = document.querySelector(".avg2p");
-twoPgame1 = document.querySelector(".twoPgame1");
-stlGame2 = document.querySelector(".stlGame2");
-stlGame3 = document.querySelector(".stlGame3");
-stlGame4 = document.querySelector(".stlGame4");
-stlGame5 = document.querySelector(".stlGame5");
+const avg3pp = document.querySelector(".avg3pp");
+const threePpGame1 = document.querySelector(".threePpGame1");
+const threePpGame2 = document.querySelector(".threePpGame2");
+const threePpGame3 = document.querySelector(".threePpGame3");
+const threePpGame4 = document.querySelector(".threePpGame4");
+const threePpGame5 = document.querySelector(".threePpGame5");
 
-avg2pa = document.querySelector(".avg2pa");
-twoPaGame1 = document.querySelector(".twoPaGame1");
-stlGame2 = document.querySelector(".stlGame2");
-stlGame3 = document.querySelector(".stlGame3");
-stlGame4 = document.querySelector(".stlGame4");
-stlGame5 = document.querySelector(".stlGame5");
+const avg2p = document.querySelector(".avg2p");
+const twoPgame1 = document.querySelector(".twoPgame1");
+const twoPgame2 = document.querySelector(".twoPgame2");
+const twoPgame3 = document.querySelector(".twoPgame3");
+const twoPgame4 = document.querySelector(".twoPgame4");
+const twoPgame5 = document.querySelector(".twoPgame5");
 
-avg2pp = document.querySelector(".avg2pp");
-twoPpGame1 = document.querySelector(".twoPpGame1");
-stlGame2 = document.querySelector(".stlGame2");
-stlGame3 = document.querySelector(".stlGame3");
-stlGame4 = document.querySelector(".stlGame4");
-stlGame5 = document.querySelector(".stlGame5");
+const avg2pa = document.querySelector(".avg2pa");
+const twoPaGame1 = document.querySelector(".twoPaGame1");
+const twoPaGame2 = document.querySelector(".twoPaGame2");
+const twoPaGame3 = document.querySelector(".twoPaGame3");
+const twoPaGame4 = document.querySelector(".twoPaGame4");
+const twoPaGame5 = document.querySelector(".twoPaGame5");
 
-avgFt = document.querySelector(".avgFt");
-ftGame1 = document.querySelector(".ftGame1");
-stlGame2 = document.querySelector(".stlGame2");
-stlGame3 = document.querySelector(".stlGame3");
-stlGame4 = document.querySelector(".stlGame4");
-stlGame5 = document.querySelector(".stlGame5");
+const avg2pp = document.querySelector(".avg2pp");
+const twoPpGame1 = document.querySelector(".twoPpGame1");
+const twoPpGame2 = document.querySelector(".twoPpGame2");
+const twoPpGame3 = document.querySelector(".twoPpGame3");
+const twoPpGame4 = document.querySelector(".twoPpGame4");
+const twoPpGame5 = document.querySelector(".twoPpGame5");
 
-avgFta = document.querySelector(".avgFta");
-ftaGame1 = document.querySelector(".ftaGame1");
-stlGame2 = document.querySelector(".stlGame2");
-stlGame3 = document.querySelector(".stlGame3");
-stlGame4 = document.querySelector(".stlGame4");
-stlGame5 = document.querySelector(".stlGame5");
+const avgFt = document.querySelector(".avgFt");
+const ftGame1 = document.querySelector(".ftGame1");
+const ftGame2 = document.querySelector(".ftGame2");
+const ftGame3 = document.querySelector(".ftGame3");
+const ftGame4 = document.querySelector(".ftGame4");
+const ftGame5 = document.querySelector(".ftGame5");
 
-avgFtp = document.querySelector(".avgFtp");
-ftpGame1 = document.querySelector(".ftpGame1");
-stlGame2 = document.querySelector(".stlGame2");
-stlGame3 = document.querySelector(".stlGame3");
-stlGame4 = document.querySelector(".stlGame4");
-stlGame5 = document.querySelector(".stlGame5");
+const avgFta = document.querySelector(".avgFta");
+const ftaGame1 = document.querySelector(".ftaGame1");
+const ftaGame2 = document.querySelector(".ftaGame2");
+const ftaGame3 = document.querySelector(".ftaGame3");
+const ftaGame4 = document.querySelector(".ftaGame4");
+const ftaGame5 = document.querySelector(".ftaGame5");
 
-avgMin = document.querySelector(".avgMin");
-minGame1 = document.querySelector(".minGame1");
-stlGame2 = document.querySelector(".stlGame2");
-stlGame3 = document.querySelector(".stlGame3");
-stlGame4 = document.querySelector(".stlGame4");
-stlGame5 = document.querySelector(".stlGame5");
+const avgFtp = document.querySelector(".avgFtp");
+const ftpGame1 = document.querySelector(".ftpGame1");
+const ftpGame2 = document.querySelector(".ftpGame2");
+const ftpGame3 = document.querySelector(".ftpGame3");
+const ftpGame4 = document.querySelector(".ftpGame4");
+const ftpGame5 = document.querySelector(".ftpGame5");
 
-avgTo = document.querySelector(".avgTo");
-toGame1 = document.querySelector(".toGame1");
-stlGame2 = document.querySelector(".stlGame2");
-stlGame3 = document.querySelector(".stlGame3");
-stlGame4 = document.querySelector(".stlGame4");
-stlGame5 = document.querySelector(".stlGame5");
+const avgMin = document.querySelector(".avgMin");
+const minGame1 = document.querySelector(".minGame1");
+const minGame2 = document.querySelector(".minGame2");
+const minGame3 = document.querySelector(".minGame3");
+const minGame4 = document.querySelector(".minGame4");
+const minGame5 = document.querySelector(".minGame5");
 
-avgPf = document.querySelector(".avgPf");
-pfGame1 = document.querySelector(".pfGame1");
-stlGame2 = document.querySelector(".stlGame2");
-stlGame3 = document.querySelector(".stlGame3");
-stlGame4 = document.querySelector(".stlGame4");
-stlGame5 = document.querySelector(".stlGame5");
+const avgTo = document.querySelector(".avgTo");
+const toGame1 = document.querySelector(".toGame1");
+const toGame2 = document.querySelector(".toGame2");
+const toGame3 = document.querySelector(".toGame3");
+const toGame4 = document.querySelector(".toGame4");
+const toGame5 = document.querySelector(".toGame5");
 
-
-/*
-fetch('https://www.balldontlie.io/api/v1/teams/12')
-  .then((response) => response.json())
-  .then((data) => console.log(data));
-
-let teamName;
-let teamNameTest;
-
-  fetch('https://www.balldontlie.io/api/v1/teams/12')
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data)
-    teamName = JSON.stringify(data);
-    console.log(teamName);
-    teamNameTest = JSON.parse(teamName);
-    testingAPI.innerHTML = teamNameTest.name;
-  });
-*/
+const avgPf = document.querySelector(".avgPf");
+const pfGame1 = document.querySelector(".pfGame1");
+const pfGame2 = document.querySelector(".pfGame2");
+const pfGame3 = document.querySelector(".pfGame3");
+const pfGame4 = document.querySelector(".pfGame4");
+const pfGame5 = document.querySelector(".pfGame5");
 
 //steph curry player id 115
 
+let apiUrl = 'https://www.balldontlie.io/api/v1/stats?seasons[]=2022&player_ids[]=115';
 
-fetch('https://www.balldontlie.io/api/v1/stats?seasons[]=2022&player_ids[]=115')
+getStats();
+
+switchPlayerButton.addEventListener("click", switchPlayer);
+
+function switchPlayer() {
+  apiUrl = 'https://www.balldontlie.io/api/v1/stats?seasons[]=2022&player_ids[]=117';
+  getStats();
+}
+
+function getStats(){
+fetch(apiUrl)
   .then((response) => response.json())
   .then((data) => {
 
@@ -240,6 +236,11 @@ fetch('https://www.balldontlie.io/api/v1/stats?seasons[]=2022&player_ids[]=115')
     let averagePf = (game1.pf + game2.pf + game3.pf + game4.pf + game5.pf) / playerLastFive.length;
 
 
+    playerName.innerHTML = game1.player.first_name + " " + game1.player.last_name;
+    playerSize.innerHTML = game1.player.height_feet + "' " + game1.player.height_inches + "&quot" + ", " + game1.player.weight_pounds +" lbs";
+    playerPosition.innerHTML = game1.player.position;
+    playerTeam.innerHTML = game1.team.full_name;
+
     avgPts.innerHTML = averagePoints;
     ptsGame1.innerHTML = game1.pts;
     ptsGame2.innerHTML = game2.pts;
@@ -277,103 +278,86 @@ fetch('https://www.balldontlie.io/api/v1/stats?seasons[]=2022&player_ids[]=115')
 
     avg3p.innerHTML = average3p;
     threePgame1.innerHTML = game1.fg3m;
-    /*
     threePgame2.innerHTML = game2.fg3m;
     threePgame3.innerHTML = game3.fg3m;
     threePgame4.innerHTML = game4.fg3m;
     threePgame5.innerHTML = game5.fg3m;
-    */
+  
     avg3pa.innerHTML = average3pa;
     threePaGame1.innerHTML = game1.fg3a;
-    /*
-    threePgame2.innerHTML = game2.fg3m;
-    threePgame3.innerHTML = game3.fg3m;
-    threePgame4.innerHTML = game4.fg3m;
-    threePgame5.innerHTML = game5.fg3m;
-    */
+    threePaGame2.innerHTML = game2.fg3a;
+    threePaGame3.innerHTML = game3.fg3a;
+    threePaGame4.innerHTML = game4.fg3a;
+    threePaGame5.innerHTML = game5.fg3a;
+
     avg3pp.innerHTML = average3pp.toFixed(2);
     threePpGame1.innerHTML = game1.fg3_pct.toFixed(2);
-    /*
-    threePgame2.innerHTML = game2.fg3m;
-    threePgame3.innerHTML = game3.fg3m;
-    threePgame4.innerHTML = game4.fg3m;
-    threePgame5.innerHTML = game5.fg3m;
-    */
+    threePpGame2.innerHTML = game2.fg3_pct.toFixed(2);;
+    threePpGame3.innerHTML = game3.fg3_pct.toFixed(2);;
+    threePpGame4.innerHTML = game4.fg3_pct.toFixed(2);;
+    threePpGame5.innerHTML = game5.fg3_pct.toFixed(2);;
 
     avg2p.innerHTML = average2p;
     twoPgame1.innerHTML = game1.fgm;
-    /*
     twoPgame2.innerHTML = game2.fgm;
     twoPgame3.innerHTML = game3.fgm;
     twoPgame4.innerHTML = game4.fgm;
     twoPgame5.innerHTML = game5.fgm;
-    */
+    
     avg2pa.innerHTML = average2pa;
     twoPaGame1.innerHTML = game1.fga;
-    /*
-    twoPgame2.innerHTML = game2.fgm;
-    twoPgame3.innerHTML = game3.fgm;
-    twoPgame4.innerHTML = game4.fgm;
-    twoPgame5.innerHTML = game5.fgm;
-    */
+    twoPaGame2.innerHTML = game2.fga;
+    twoPaGame3.innerHTML = game3.fga;
+    twoPaGame4.innerHTML = game4.fga;
+    twoPaGame5.innerHTML = game5.fga;
+ 
     avg2pp.innerHTML = average2pp.toFixed(2);
     twoPpGame1.innerHTML = game1.fg_pct.toFixed(2);
-    /*
-    twoPgame2.innerHTML = game2.fgm;
-    twoPgame3.innerHTML = game3.fgm;
-    twoPgame4.innerHTML = game4.fgm;
-    twoPgame5.innerHTML = game5.fgm;
-    */
+    twoPpGame2.innerHTML = game2.fg_pct.toFixed(2);;
+    twoPpGame3.innerHTML = game3.fg_pct.toFixed(2);;
+    twoPpGame4.innerHTML = game4.fg_pct.toFixed(2);;
+    twoPpGame5.innerHTML = game5.fg_pct.toFixed(2);;
 
     avgFt.innerHTML = averageFt;
     ftGame1.innerHTML = game1.ftm;
-    /*
-    ftpGame2.innerHTML = game2.ft_pct;
-    ftpGame3.innerHTML = game3.ft_pct;
-    ftpGame4.innerHTML = game4.ft_pct;
-    ftpGame5.innerHTML = game5.ft_pct;
-    */
+    ftGame2.innerHTML = game2.ftm;
+    ftGame3.innerHTML = game3.ftm;
+    ftGame4.innerHTML = game4.ftm;
+    ftGame5.innerHTML = game5.ftm;
+  
     avgFta.innerHTML = averageFta;
     ftaGame1.innerHTML = game1.fta;
-    /*
-    ftpGame2.innerHTML = game2.ft_pct;
-    ftpGame3.innerHTML = game3.ft_pct;
-    ftpGame4.innerHTML = game4.ft_pct;
-    ftpGame5.innerHTML = game5.ft_pct;
-    */
-    avgFtp.innerHTML = averageFtp;
-    ftpGame1.innerHTML = game1.ft_pct;
-    /*
-    ftpGame2.innerHTML = game2.ft_pct;
-    ftpGame3.innerHTML = game3.ft_pct;
-    ftpGame4.innerHTML = game4.ft_pct;
-    ftpGame5.innerHTML = game5.ft_pct;
-    */
+    ftaGame2.innerHTML = game2.fta;
+    ftaGame3.innerHTML = game3.fta;
+    ftaGame4.innerHTML = game4.fta;
+    ftaGame5.innerHTML = game5.fta;
+    
+    avgFtp.innerHTML = averageFtp.toFixed(2);;
+    ftpGame1.innerHTML = game1.ft_pct.toFixed(2);;
+    ftpGame2.innerHTML = game2.ft_pct.toFixed(2);;
+    ftpGame3.innerHTML = game3.ft_pct.toFixed(2);;
+    ftpGame4.innerHTML = game4.ft_pct.toFixed(2);;
+    ftpGame5.innerHTML = game5.ft_pct.toFixed(2);;
 
     avgMin.innerHTML = averageMin;
     minGame1.innerHTML = game1.min;
-    /*
-    ftpGame2.innerHTML = game2.ft_pct;
-    ftpGame3.innerHTML = game3.ft_pct;
-    ftpGame4.innerHTML = game4.ft_pct;
-    ftpGame5.innerHTML = game5.ft_pct;
-    */
+    minGame2.innerHTML = game2.min;
+    minGame3.innerHTML = game3.min;
+    minGame4.innerHTML = game4.min;
+    minGame5.innerHTML = game5.min;
 
     avgTo.innerHTML = averageTo;
     toGame1.innerHTML = game1.turnover;
-    /*
-    ftpGame2.innerHTML = game2.ft_pct;
-    ftpGame3.innerHTML = game3.ft_pct;
-    ftpGame4.innerHTML = game4.ft_pct;
-    ftpGame5.innerHTML = game5.ft_pct;
-    */
+    toGame2.innerHTML = game2.turnover;
+    toGame3.innerHTML = game3.turnover;
+    toGame4.innerHTML = game4.turnover;
+    toGame5.innerHTML = game5.turnover;
 
     avgPf.innerHTML = averagePf;
     pfGame1.innerHTML = game1.pf;
-    /*
-    ftpGame2.innerHTML = game2.ft_pct;
-    ftpGame3.innerHTML = game3.ft_pct;
-    ftpGame4.innerHTML = game4.ft_pct;
-    ftpGame5.innerHTML = game5.ft_pct;
-    */
+    pfGame2.innerHTML = game2.pf;
+    pfGame3.innerHTML = game3.pf;
+    pfGame4.innerHTML = game4.pf;
+    pfGame5.innerHTML = game5.pf;
   })
+}
