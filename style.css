@@ -318,13 +318,14 @@ header {
     border: 1.5px solid var(--clr-dark);
     border-radius: 10px;
     box-shadow: var(--bs);
-    padding: 1em;
+    padding: .5em;
     margin: auto;
 }
 
 .gameTables {
     margin: auto;
     padding: 1em;
+    padding-top: 0;
 }
 
 .gameTables th, td {

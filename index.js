@@ -5,6 +5,13 @@ const playerSize = document.querySelector(".playerSize");
 const playerPosition = document.querySelector(".playerPosition");
 const playerTeam = document.querySelector(".playerTeam");
 
+const game1score = document.querySelector(".game1score");
+const game2score = document.querySelector(".game2score");
+const game3score = document.querySelector(".game3score");
+const game4score = document.querySelector(".game4score");
+const game5score = document.querySelector(".game5score");
+
+
 const avgPts = document.querySelector(".avgPts");
 const ptsGame1 = document.querySelector(".ptsGame1");
 const ptsGame2 = document.querySelector(".ptsGame2");
@@ -240,6 +247,12 @@ fetch(apiUrl)
     playerSize.innerHTML = game1.player.height_feet + "' " + game1.player.height_inches + "&quot" + ", " + game1.player.weight_pounds +" lbs";
     playerPosition.innerHTML = game1.player.position;
     playerTeam.innerHTML = game1.team.full_name;
+
+    game1score.innerHTML = game1.game.visitor_team_score + " - " + game1.game.home_team_score;
+    game2score.innerHTML = game2.game.visitor_team_score + " - " + game2.game.home_team_score;
+    game3score.innerHTML = game3.game.visitor_team_score + " - " + game3.game.home_team_score;
+    game4score.innerHTML = game4.game.visitor_team_score + " - " + game4.game.home_team_score;
+    game5score.innerHTML = game5.game.visitor_team_score + " - " + game5.game.home_team_score;
 
     avgPts.innerHTML = averagePoints;
     ptsGame1.innerHTML = game1.pts;
