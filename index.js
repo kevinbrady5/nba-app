@@ -2,7 +2,6 @@ const switchPlayerButton = document.querySelector(".switchPlayer");
 
 const playerName = document.querySelector(".playerName");
 const playerSize = document.querySelector(".playerSize");
-const playerPosition = document.querySelector(".playerPosition");
 const playerTeam = document.querySelector(".playerTeam");
 
 const game1score = document.querySelector(".game1score");
@@ -11,6 +10,11 @@ const game3score = document.querySelector(".game3score");
 const game4score = document.querySelector(".game4score");
 const game5score = document.querySelector(".game5score");
 
+const game1date = document.querySelector(".game1date");
+const game2date = document.querySelector(".game2date");
+const game3date = document.querySelector(".game3date");
+const game4date = document.querySelector(".game4date");
+const game5date = document.querySelector(".game5date");
 
 const avgPts = document.querySelector(".avgPts");
 const ptsGame1 = document.querySelector(".ptsGame1");
@@ -151,6 +155,12 @@ fetch(apiUrl)
 
     let playerStatsJSON = JSON.stringify(data);
     let playerStats = JSON.parse(playerStatsJSON);
+    playerStats.data.sort(function(a, b){
+      const date1 = new Date(a.game.date)
+      const date2 = new Date(b.game.date)
+
+      return date1 - date2;
+    })
 
     console.log(playerStats.data[playerStats.data.length-10]);
     console.log(playerStats.data[playerStats.data.length-9]);
@@ -244,8 +254,7 @@ fetch(apiUrl)
 
 
     playerName.innerHTML = game1.player.first_name + " " + game1.player.last_name;
-    playerSize.innerHTML = game1.player.height_feet + "' " + game1.player.height_inches + "&quot" + ", " + game1.player.weight_pounds +" lbs";
-    playerPosition.innerHTML = game1.player.position;
+    playerSize.innerHTML = game1.player.height_feet + "' " + game1.player.height_inches + "&quot" + ", " + game1.player.weight_pounds +" lbs" + ", " + game1.player.position;
     playerTeam.innerHTML = game1.team.full_name;
 
     game1score.innerHTML = game1.game.visitor_team_score + " - " + game1.game.home_team_score;
@@ -253,6 +262,12 @@ fetch(apiUrl)
     game3score.innerHTML = game3.game.visitor_team_score + " - " + game3.game.home_team_score;
     game4score.innerHTML = game4.game.visitor_team_score + " - " + game4.game.home_team_score;
     game5score.innerHTML = game5.game.visitor_team_score + " - " + game5.game.home_team_score;
+
+    game1date.innerHTML = game1.game.date.slice(0, 10);
+    game2date.innerHTML = game2.game.date.slice(0, 10);
+    game3date.innerHTML = game3.game.date.slice(0, 10);
+    game4date.innerHTML = game4.game.date.slice(0, 10);
+    game5date.innerHTML = game5.game.date.slice(0, 10);
 
     avgPts.innerHTML = averagePoints;
     ptsGame1.innerHTML = game1.pts;
