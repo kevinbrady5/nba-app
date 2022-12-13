@@ -164,6 +164,10 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 1em;
+    position: fixed;
+    width: 100%;
+    background-color: var(--clr-light);
+    z-index: 1000;
 }
 
 .logo {
@@ -312,6 +316,10 @@ header {
         left: -1.5em;
         width: calc(100% + 1.5em);
     }
+}
+
+.statsDisplay {
+    display: none;
 }
 
 .avgTable {
@@ -625,3 +633,28 @@ header {
     margin-left: auto;
     margin-right: auto;
 }
+
+
+.search {
+    position: relative;
+    display: inline-block;
+  }
+  input {
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: .5em;
+    font-size: var(--fs-body);
+    margin-top: 2em;
+  }
+  input[type=text] {
+    background-color: #f1f1f1;
+    width: 100%;
+  }
+  input[type=submit] {
+    background-color: var(--clr-dark);
+    color: #fff;
+  }
+
+  .searchButton {
+    margin-top: .5em;
+  }

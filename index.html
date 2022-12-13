@@ -84,7 +84,19 @@
 
     <!-- My Work -->
     <section class="my-work" id="work">
-        <button class="switchPlayer">Switch Player</button>
+        
+        <form id="searchForm" autocomplete="off" >
+          <div class="search" style="width:300px;">
+            <input id="searchPlayer" type="text" name="playerName" placeholder="Player Name">
+          </div>
+          <input type="submit" class="searchButton" value="Search">
+        </form>
+
+        <div class="searchResults">
+
+        </div>
+
+        <div class="statsDisplay">
         <h2 class="playerName">
             Player
         </h2>
@@ -687,6 +699,7 @@
           </div>
           <div class="carousel__skip-message" id="skip-link" tabindex="0"></div>
         </section>
+      </div>
     </section>
 
     <!-- Footer -->
@@ -716,6 +729,6 @@
         </ul>
     </footer>
 
-    <script src="index.js"></script>
+    <script type="module" src="index.js"></script>
 </body>
 </html>

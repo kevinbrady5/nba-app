@@ -1,4 +1,5 @@
-const switchPlayerButton = document.querySelector(".switchPlayer");
+const searchResults = document.querySelector(".searchResults");
+const statsDisplay = document.querySelector(".statsDisplay");
 
 const playerName = document.querySelector(".playerName");
 const playerSize = document.querySelector(".playerSize");
@@ -135,20 +136,100 @@ const pfGame3 = document.querySelector(".pfGame3");
 const pfGame4 = document.querySelector(".pfGame4");
 const pfGame5 = document.querySelector(".pfGame5");
 
+let players = [];
+
 //steph curry player id 115
 
-let apiUrl = 'https://www.balldontlie.io/api/v1/stats?seasons[]=2022&player_ids[]=115';
+let apiUrl = 'https://www.balldontlie.io/api/v1/stats?seasons[]=2022';
 
-getStats();
+const apiUrlPlayers = 'https://www.balldontlie.io/api/v1/players?per_page=100';
 
-switchPlayerButton.addEventListener("click", switchPlayer);
+//getPlayers();
 
-function switchPlayer() {
-  apiUrl = 'https://www.balldontlie.io/api/v1/stats?seasons[]=2022&player_ids[]=117';
-  getStats();
+//getStats();
+
+document.getElementById("searchForm").addEventListener("submit", searchPlayer);
+
+searchPlayer();
+
+  // Click handler for entire DIV container
+  searchResults.addEventListener('click', function (e) {
+    // But only for elements that have a player-button class
+    if (e.target.classList.contains('player-button')) {
+      setPlayer(e.target.innerHTML);
+    }
+  });
+
+function searchPlayer() {
+  
+  const queryString = window.location.search;
+  console.log(queryString);
+  const urlParams = new URLSearchParams(queryString);
+  const name = urlParams.get('playerName')
+  console.log(name);
+  let url = 'https://www.balldontlie.io/api/v1/players?per_page=100';
+  let playerUrl = `${url}&search=${name}`;
+  fetch(playerUrl)
+  .then((response) => response.json())
+  .then((data) => {
+    let playerNameJSON = JSON.stringify(data);
+    let playerNameString = JSON.parse(playerNameJSON);
+   
+
+    playerNameString.data.forEach(player => {
+      let playerButton = document.createElement("button");
+      playerButton.id = player.first_name + player.last_name + "Button";
+      playerButton.classList.add('player-button');
+      playerButton.innerHTML = player.first_name + " " + player.last_name;
+      
+      searchResults.appendChild(playerButton);
+      searchResults.innerHTML += "<br>";
+    
+    });
+
+  })
+}
+
+
+function setPlayer(name) {
+  
+  console.log(name);
+  let url = 'https://www.balldontlie.io/api/v1/players';
+  let playerUrl = `${url}?search=${name}`;
+  fetch(playerUrl)
+  .then((response) => response.json())
+  .then((data) => {
+    let playerNameJSON = JSON.stringify(data);
+    let playerNameString = JSON.parse(playerNameJSON);
+
+    let selectedPlayerId = playerNameString.data[0].id;
+    console.log(selectedPlayerId);
+
+    apiUrl = `${apiUrl}&player_ids[]=${selectedPlayerId}`;
+    console.log(apiUrl);
+    
+    checkStats();
+  })
+}
+
+function checkStats(){
+  fetch(apiUrl)
+  .then((response) => response.json())
+  .then((data) => {
+
+    let playerStatsJSON = JSON.stringify(data);
+    let playerStats = JSON.parse(playerStatsJSON);
+    if(playerStats.data.length != 0) {
+      getStats();
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+  })
 }
 
 function getStats(){
+searchResults.innerHTML="";
+statsDisplay.style.display = "block";
 fetch(apiUrl)
   .then((response) => response.json())
   .then((data) => {
@@ -186,19 +267,19 @@ fetch(apiUrl)
       if(playerStats.data[playerStats.data.length-mostRecentGamePlayedCounter].min != 0){
         switch (gameNumber) {
           case 1:
-            game1 = playerStats.data[playerStats.data.length-mostRecentGamePlayedCounter];
+            game5 = playerStats.data[playerStats.data.length-mostRecentGamePlayedCounter];
             break;
           case 2:
-            game2 = playerStats.data[playerStats.data.length-mostRecentGamePlayedCounter];
+            game4 = playerStats.data[playerStats.data.length-mostRecentGamePlayedCounter];
             break;
           case 3:
             game3 = playerStats.data[playerStats.data.length-mostRecentGamePlayedCounter];
             break;
           case 4:
-            game4 = playerStats.data[playerStats.data.length-mostRecentGamePlayedCounter];
+            game2 = playerStats.data[playerStats.data.length-mostRecentGamePlayedCounter];
             break;
           case 5:
-            game5 = playerStats.data[playerStats.data.length-mostRecentGamePlayedCounter];
+            game1 = playerStats.data[playerStats.data.length-mostRecentGamePlayedCounter];
             break;
         }
         console.log(mostRecentGamePlayedCounter);
@@ -389,3 +470,56 @@ fetch(apiUrl)
     pfGame5.innerHTML = game5.pf;
   })
 }
+
+
+function getPlayers(
+  url = apiUrlPlayers,
+  page = 35,
+  previousResponse = []
+) {
+  return fetch(`${url}&page=${page}`) // Append the page number to the base URL
+    .then(response => response.json())
+    .then(newResponse => {
+      const response = previousResponse.concat(newResponse); // Combine the two arrays
+
+      if (newResponse.length !== 0) {
+        page++;
+
+        return getPlayers(url, page, response);
+      }
+
+      return response;
+    });
+}
+/*
+function getPlayers() {
+    fetch(apiUrlPlayers)
+      .then((response) => response.json())
+      .then((data) => {
+        let playerNamesJSON = JSON.stringify(data);
+        let playerNames = JSON.parse(playerNamesJSON);
+
+      
+        function compare( a, b ) {
+          if ( a.last_name < b.last_name ){
+            return -1;
+          }
+          if ( a.last_name > b.last_name ){
+            return 1;
+          }
+          return 0;
+        }
+        
+        playerNames.data.sort( compare );
+        console.log(playerNames);
+        console.log(playerNames.meta.total_pages);
+
+        playerNames.data.forEach(player => {
+          players.push(player.first_name + " " + player.last_name);
+        });
+
+        console.log(players);
+
+      })
+}
+*/
