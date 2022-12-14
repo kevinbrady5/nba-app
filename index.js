@@ -258,7 +258,8 @@ function checkStats(){
 }
 
 function getStats(){
-searchForm.style.display = "none";
+//searchForm.style.display = "none";
+document.getElementById("searchPlayer").value = "";
 searchResults.innerHTML="";
 searchNotice.style.display = "none";
 statsDisplay.style.display = "block";
