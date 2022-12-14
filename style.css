@@ -331,6 +331,7 @@ header {
 
 .statsDisplay {
     display: none;
+    margin-top: 3em;
 }
 
 .avgTable {
@@ -647,6 +648,9 @@ header {
     margin-right: auto;
 }
 
+.searchForm {
+    display: block;
+}
 
 .search {
     position: relative;
@@ -675,4 +679,23 @@ header {
   .searchResults {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+
+  }
+
+  .searchNotice {
+    display: none;
+  }
+
+  .tagline {
+    display: block;
+    margin-top: 8em;
+  }
+
+  hr {
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }

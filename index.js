@@ -1,4 +1,9 @@
+const tagline = document.querySelector(".tagline");
+
 const searchResults = document.querySelector(".searchResults");
+const searchNotice = document.querySelector(".searchNotice");
+const searchForm = document.getElementById("searchForm");
+
 const statsDisplay = document.querySelector(".statsDisplay");
 
 const playerName = document.querySelector(".playerName");
@@ -136,47 +141,62 @@ const pfGame3 = document.querySelector(".pfGame3");
 const pfGame4 = document.querySelector(".pfGame4");
 const pfGame5 = document.querySelector(".pfGame5");
 
-let players = [];
-
 //steph curry player id 115
 
 let apiUrl = 'https://www.balldontlie.io/api/v1/stats?seasons[]=2022';
 
 const apiUrlPlayers = 'https://www.balldontlie.io/api/v1/players?per_page=100';
 
-//getPlayers();
 
-//getStats();
-
-document.getElementById("searchForm").addEventListener("submit", searchPlayer);
-
-searchPlayer();
+  const queryString = window.location.search;
+  console.log(queryString);
+  const urlParams = new URLSearchParams(queryString);
+  if(urlParams.has('playerName')){
+    searchPlayer();
+  }
 
   // Click handler for entire DIV container
   searchResults.addEventListener('click', function (e) {
     // But only for elements that have a player-button class
     if (e.target.classList.contains('player-button')) {
+      console.log("I clicked" + e.target.innerHTML);
       setPlayer(e.target.innerHTML);
     }
   });
 
 function searchPlayer() {
-  
+  tagline.style.display = "none";
   const queryString = window.location.search;
   console.log(queryString);
   const urlParams = new URLSearchParams(queryString);
   const name = urlParams.get('playerName')
   console.log(name);
-  let url = 'https://www.balldontlie.io/api/v1/players?per_page=100';
+  document.getElementById("searchPlayer").value = name;
+  let url = 'https://www.balldontlie.io/api/v1/players?per_page=10';
   let playerUrl = `${url}&search=${name}`;
   fetch(playerUrl)
   .then((response) => response.json())
   .then((data) => {
-    let playerNameJSON = JSON.stringify(data);
-    let playerNameString = JSON.parse(playerNameJSON);
+    let playerNameJSONsearch = JSON.stringify(data);
+    let playerNameStringSearch = JSON.parse(playerNameJSONsearch);
    
+    playerNameStringSearch.data.forEach(player => {
+      let apiUrlSearch = 'https://www.balldontlie.io/api/v1/stats?seasons[]=2022';
+      apiUrlSearch = `${apiUrlSearch}&player_ids[]=${player.id}`;
+console.log(player.id);
+  fetch(apiUrlSearch)
+  .then((response) => response.json())
+  .then((data) => {
 
-    playerNameString.data.forEach(player => {
+    let playerStatsJSON = JSON.stringify(data);
+    let playerStats = JSON.parse(playerStatsJSON);
+    let gameCount = 0;
+    playerStats.data.forEach(game => {
+      if(game.min != 0) {
+        gameCount ++;
+      }
+    });
+    if(playerStats.data.length != 0 && gameCount >= 5) {
       let playerButton = document.createElement("button");
       playerButton.id = player.first_name + player.last_name + "Button";
       playerButton.classList.add('player-button');
@@ -184,9 +204,13 @@ function searchPlayer() {
       
       searchResults.appendChild(playerButton);
       searchResults.innerHTML += "<br>";
-    
-    });
+      searchNotice.style.display = "block";
+      searchNotice.innerHTML = "*only showing players with at least 5 games played this season"
+    }
+  })
 
+    });
+   
   })
 }
 
@@ -219,7 +243,13 @@ function checkStats(){
 
     let playerStatsJSON = JSON.stringify(data);
     let playerStats = JSON.parse(playerStatsJSON);
-    if(playerStats.data.length != 0) {
+    let gameCount = 0;
+    playerStats.data.forEach(game => {
+      if(game.min != 0) {
+        gameCount ++;
+      }
+    });
+    if(playerStats.data.length != 0 && gameCount >= 5) {
       getStats();
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
@@ -228,7 +258,9 @@ function checkStats(){
 }
 
 function getStats(){
+searchForm.style.display = "none";
 searchResults.innerHTML="";
+searchNotice.style.display = "none";
 statsDisplay.style.display = "block";
 fetch(apiUrl)
   .then((response) => response.json())
@@ -491,35 +523,3 @@ function getPlayers(
       return response;
     });
 }
-/*
-function getPlayers() {
-    fetch(apiUrlPlayers)
-      .then((response) => response.json())
-      .then((data) => {
-        let playerNamesJSON = JSON.stringify(data);
-        let playerNames = JSON.parse(playerNamesJSON);
-
-      
-        function compare( a, b ) {
-          if ( a.last_name < b.last_name ){
-            return -1;
-          }
-          if ( a.last_name > b.last_name ){
-            return 1;
-          }
-          return 0;
-        }
-        
-        playerNames.data.sort( compare );
-        console.log(playerNames);
-        console.log(playerNames.meta.total_pages);
-
-        playerNames.data.forEach(player => {
-          players.push(player.first_name + " " + player.last_name);
-        });
-
-        console.log(players);
-
-      })
-}
-*/
