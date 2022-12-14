@@ -62,7 +62,7 @@ body {
 }
 
 section {
-     padding: 1em 1em;
+     padding: 4em 1em;
 }
 
 img {
@@ -678,7 +678,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 6em;
+    margin-top: 3em;
   }
 
   .searchNotice {
@@ -792,5 +792,4 @@ header {
   body .searchbox {
     width: 90%;
     margin: 0 auto;
-    top: 48px;
   }

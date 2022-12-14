@@ -172,7 +172,7 @@ function searchPlayer() {
   const name = urlParams.get('playerName')
   console.log(name);
   document.getElementById("searchPlayer").value = name;
-  let url = 'https://www.balldontlie.io/api/v1/players?per_page=10';
+  let url = 'https://www.balldontlie.io/api/v1/players?per_page=25';
   let playerUrl = `${url}&search=${name}`;
   fetch(playerUrl)
   .then((response) => response.json())
@@ -368,7 +368,11 @@ fetch(apiUrl)
 
 
     playerName.innerHTML = game1.player.first_name + " " + game1.player.last_name;
-    playerSize.innerHTML = game1.player.height_feet + "' " + game1.player.height_inches + "&quot" + ", " + game1.player.weight_pounds +" lbs" + ", " + game1.player.position;
+    if(game1.player.height_feet != null){
+    playerSize.innerHTML = game1.player.height_feet + "' " + game1.player.height_inches + "&quot" + ", " + game1.player.weight_pounds +" lbs" + ", " + game1.player.position;}
+    else {
+      playerSize.innerHTML = game1.player.position;
+    }
     playerTeam.innerHTML = game1.team.full_name;
 
     game1score.innerHTML = game1.game.visitor_team_score + " - " + game1.game.home_team_score;
