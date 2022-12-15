@@ -180,6 +180,11 @@ header {
     z-index: 1000;
 }
 
+.headerLink {
+    text-decoration: none;
+    color: var(--clr-dark);
+}
+
 .logo {
     max-width: 100px;
 }
