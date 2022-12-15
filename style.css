@@ -329,9 +329,30 @@ header {
 }
 
 .player-button {
+    background-color: #e7e7e7;
+    border: 1px solid var(--clr-dark);
+    color: var(--clr-dark);
+    border-radius: 5px;
+    box-shadow: var(--bs);
     padding: .5em;
     margin: .5em;
+    cursor: pointer;
+    transition: transform 200ms ease-in-out;
 }
+
+.player-button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+  @media (hover: hover) {
+    button:hover {
+      transform: scale(1.05);
+       background-color: var(--clr-dark);
+       color: var(--clr-light);
+     }
+  }
+
 
 .statsDisplay {
     display: none;

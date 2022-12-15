@@ -143,7 +143,7 @@ const pfGame5 = document.querySelector(".pfGame5");
 
 //steph curry player id 115
 
-let apiUrl = 'https://www.balldontlie.io/api/v1/stats?seasons[]=2022';
+let apiUrl = 'https://www.balldontlie.io/api/v1/stats?seasons[]=2022&per_page=100';
 
 const apiUrlPlayers = 'https://www.balldontlie.io/api/v1/players?per_page=100';
 
@@ -159,8 +159,8 @@ const apiUrlPlayers = 'https://www.balldontlie.io/api/v1/players?per_page=100';
   searchResults.addEventListener('click', function (e) {
     // But only for elements that have a player-button class
     if (e.target.classList.contains('player-button')) {
-      console.log("I clicked" + e.target.innerHTML);
-      setPlayer(e.target.innerHTML);
+      console.log("I clicked " + e.target.innerHTML);
+      setPlayer(e.target);
     }
   });
 
@@ -172,7 +172,7 @@ function searchPlayer() {
   const name = urlParams.get('playerName')
   console.log(name);
   document.getElementById("searchPlayer").value = name;
-  let url = 'https://www.balldontlie.io/api/v1/players?per_page=25';
+  let url = 'https://www.balldontlie.io/api/v1/players?per_page=100';
   let playerUrl = `${url}&search=${name}`;
   fetch(playerUrl)
   .then((response) => response.json())
@@ -181,22 +181,7 @@ function searchPlayer() {
     let playerNameStringSearch = JSON.parse(playerNameJSONsearch);
    
     playerNameStringSearch.data.forEach(player => {
-      let apiUrlSearch = 'https://www.balldontlie.io/api/v1/stats?seasons[]=2022';
-      apiUrlSearch = `${apiUrlSearch}&player_ids[]=${player.id}`;
-console.log(player.id);
-  fetch(apiUrlSearch)
-  .then((response) => response.json())
-  .then((data) => {
-
-    let playerStatsJSON = JSON.stringify(data);
-    let playerStats = JSON.parse(playerStatsJSON);
-    let gameCount = 0;
-    playerStats.data.forEach(game => {
-      if(game.min != 0) {
-        gameCount ++;
-      }
-    });
-    if(playerStats.data.length != 0 && gameCount >= 5) {
+      
       let playerButton = document.createElement("button");
       playerButton.id = player.first_name + player.last_name + "Button";
       playerButton.classList.add('player-button');
@@ -205,9 +190,9 @@ console.log(player.id);
       searchResults.appendChild(playerButton);
       searchResults.innerHTML += "<br>";
       searchNotice.style.display = "block";
-      searchNotice.innerHTML = "*only showing players with at least 5 games played this season"
-    }
-  })
+      searchNotice.innerHTML = "*if you don't see the player you were searching for, try searching by first and last name"
+    
+
 
     });
    
@@ -215,11 +200,11 @@ console.log(player.id);
 }
 
 
-function setPlayer(name) {
+function setPlayer(playerButtonClicked) {
   
-  console.log(name);
+  console.log(playerButtonClicked.innerHTML);
   let url = 'https://www.balldontlie.io/api/v1/players';
-  let playerUrl = `${url}?search=${name}`;
+  let playerUrl = `${url}?search=${playerButtonClicked.innerHTML}`;
   fetch(playerUrl)
   .then((response) => response.json())
   .then((data) => {
@@ -232,11 +217,11 @@ function setPlayer(name) {
     apiUrl = `${apiUrl}&player_ids[]=${selectedPlayerId}`;
     console.log(apiUrl);
     
-    checkStats();
+    checkStats(playerButtonClicked);
   })
 }
 
-function checkStats(){
+function checkStats(playerButtonClicked){
   fetch(apiUrl)
   .then((response) => response.json())
   .then((data) => {
@@ -253,6 +238,9 @@ function checkStats(){
       getStats();
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    } else {
+      alert("This player has not played at least 5 games in the current season.");
+      playerButtonClicked.disabled = true;
     }
   })
 }
