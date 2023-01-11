@@ -623,15 +623,15 @@ header {
 
 .footer {
     background: #111;
-    color: var(--clr-accent);
+    color: var(--clr-light);
     text-align: center;
-    font-size: var(--fs-h3);
     flex-shrink: 0;
 }
 
 .footer a { 
-    color: inherit;
+    color: var(--clr-accent);
     text-decoration: none;
+    font-weight: bold;
 }
 
 .footer__link {
